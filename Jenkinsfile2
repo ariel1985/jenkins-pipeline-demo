@@ -5,19 +5,42 @@ pipeline {
     
     stage('Build') {
       steps {
-        echo 'Building stage'
+        echo 'Building stage start'
       }
     }
     
     stage('Test'){
-      steps {
-        echo 'Testing stage'
+      
+      parallel {
+        stage('Apple') {
+          steps {
+            echo "stage: Apple 1"
+            sleep 5
+            echo "stage: Apple 2"
+          }
+        }
+        stage('Android') {
+          steps {
+            echo "stage: Android 1"
+            sleep 2
+            echo "stage: Android 2"
+          }
+        }
+
+        stage('Web') {
+          steps {
+            echo "stage: web 1"
+            sleep 3
+            echo "stage: web 2"
+          }
+        }
       }
+    
     }
     
     stage('Deploy') {
       steps {
-        echo 'Deploy stage'
+        echo 'Deploy stage end'
       }
     }
     
