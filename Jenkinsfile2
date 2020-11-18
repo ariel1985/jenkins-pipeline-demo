@@ -3,12 +3,6 @@ pipeline {
   
   stages {
     
-    stage('Eli') {
-      steps {
-        echo 'The stage of Eli'
-      }
-    }
-    
     stage('Build') {
       steps {
         echo 'Building stage'
